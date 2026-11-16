@@ -4,7 +4,25 @@ function afficherRecettes(recettes) {
     const compteur = document.getElementById("compteur-recettes")
     compteur.textContent = `${recettes.length} recettes disponibles`
 
+    const returne = document.createElement("button")
+    returne.className = "col-span-full justify-self-center bg-[#315B45] text-white px-6 py-3 rounded-xl font-semibold shadow-md hover:bg-[#244533] hover:scale-105 transition-all duration-200 cursor-pointer"
+
     container.replaceChildren()
+
+    if (recettes.length === 0) {
+        const message = document.createElement("p")
+        message.textContent = "Aucune recette trouvée"
+        message.className = "col-span-full text-center bg-white rounded-2xl shadow-sm border border-gray-200 py-12 px-6 text-lg font-medium text-[#315B45]"
+        container.appendChild(message)
+        
+        returne.textContent = "Voir toutes les recettes"
+        container.appendChild(returne)
+        returne.addEventListener("click" ,async function() {
+        const recettesOriginales = await getRecipes()
+        afficherRecettes(recettesOriginales)
+        })
+        return
+    }
 
     recettes.forEach(function(recette) {
         const card = document.createElement("div")
