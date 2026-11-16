@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cuisine Club | YouCode</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-[#FAF7F2] text-[#342C26] min-h-screen">
+
+ 
+  <header class="bg-white/90 border-b border-[#E7DFD5]">
+    <div class="max-w-6xl mx-auto px-5 py-5 flex items-center justify-between gap-4">
+      <a href="#" class="flex items-center gap-3 font-bold text-xl text-[#315B45]">
+        <span class="w-11 h-11 rounded-2xl bg-[#315B45] text-white grid place-items-center text-2xl">
+          ✦
+        </span>
+        Cuisine Club
+      </a>
+
+      <span class="hidden sm:inline text-sm text-[#786E64]">
+        Les recettes de notre communauté
+      </span>
+    </div>
+  </header>
+
+  <main>
+
+    
+    <section class="bg-[#315B45] text-white">
+      <div class="max-w-6xl mx-auto px-5 py-16 md:py-20">
+
+        <p class="uppercase tracking-[0.25em] text-sm text-[#D8E9DB] mb-4">
+          YouCode · Atelier cuisine
+        </p>
+
+        <h1 class="text-4xl md:text-6xl font-bold leading-tight max-w-3xl">
+          Des recettes à partager, des saveurs à découvrir.
+        </h1>
+
+        <p class="text-[#E4EFE5] mt-5 max-w-xl text-lg">
+          Explorez les idées de notre carnet et trouvez votre prochaine inspiration culinaire.
+        </p>
+
+        <a href="#recettes"
+           class="inline-block mt-8 bg-[#D9784B] hover:bg-[#C5683E] transition px-6 py-3 rounded-xl font-semibold">
+          Explorer les recettes
+        </a>
+
+      </div>
+    </section>
+
+
+    <section id="recettes" class="max-w-6xl mx-auto px-5 py-12">
+
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-8">
+
+        <div>
+          <p class="text-[#D9784B] font-semibold text-sm uppercase tracking-widest mb-2">
+            Notre carnet
+          </p>
+
+          <h2 class="text-3xl font-bold">
+            Toutes les recettes
+          </h2>
+
+          <p id="compteur-recettes" class="text-[#786E64] mt-2">
+            Les recettes apparaîtront ici.
+          </p>
+        </div>
+
+      
+        <form id="form-recherche"
+              class="flex gap-2 w-full md:max-w-md"
+              role="search">
+
+          <label for="recherche" class="sr-only">
+            Rechercher une recette
+          </label>
+
+          <input
+            id="recherche"
+            name="recherche"
+            type="search"
+            placeholder="Rechercher une recette..."
+            class="min-w-0 flex-1 bg-white border border-[#E7DFD5] rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-[#315B45]"
+          >
+
+          <button type="submit"
+                  class="bg-[#315B45] hover:bg-[#244735] text-white rounded-xl px-5 py-3 font-semibold transition">
+            Chercher
+          </button>
+
+        </form>
+      </div>
+
+     
+      <div id="chargement"
+           class="hidden text-center py-10 text-[#315B45]"
+           role="status">
+        Chargement des recettes...
+      </div>
+
+   
+      <div id="message"
+           class="hidden mb-6 rounded-xl p-4 bg-white border border-[#E7DFD5]"
+           role="status">
+      </div>
+
+ 
+      <div id="liste-recettes"
+           class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <footer class="border-t border-[#E7DFD5] py-7 text-center text-sm text-[#786E64]">
+    © 2026 YouCode Cuisine Club · Fait avec passion
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/script.js"></script>
+
+</body>
+</html>
