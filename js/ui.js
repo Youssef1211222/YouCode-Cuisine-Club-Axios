@@ -5,7 +5,6 @@ function afficherRecettes(recettes) {
     compteur.textContent = `${recettes.length} recettes disponibles`
 
     const returne = document.createElement("button")
-    returne.className = "col-span-full justify-self-center bg-[#315B45] text-white px-6 py-3 rounded-xl font-semibold shadow-md hover:bg-[#244533] hover:scale-105 transition-all duration-200 cursor-pointer"
 
     container.replaceChildren()
 
