@@ -51,7 +51,8 @@
 
       </div>
     </section>
-
+    
+    <button id="ouvrir-modal" class=" bg-[#315B45] text-white rounded-xl px-6  py-3 hover:bg-[#244533] m-[10px]">+ Ajouter une recette</button>
 
     <section id="recettes" class="max-w-6xl mx-auto px-5 py-12">
 
@@ -118,6 +119,89 @@
 
   </main>
 
+
+  <dialog id="modal-recette" class="w-full max-w-lg p-6 rounded-2xl shadow-2xl backdrop:bg-black/50">
+    <div class="flex justify-between items-center">
+    <h2>Ajouter une recette</h2>
+    <button id="fermer-modal">×</button>
+    </div>
+    <form id="form-ajout" class="flex flex-col gap-5 mt-6">
+
+    <div class="flex flex-col gap-2">
+        <label for="nom-recette" class="font-medium text-[#342C26]">
+            Nom de la recette
+        </label>
+        <input
+            type="text"
+            id="nom-recette"
+            placeholder="Ex: Pizza Margherita"
+            class="border border-gray-300 rounded-xl px-4 py-3 outline-none focus:border-[#315B45]"
+        >
+        <p id="erreur-nom" class="text-red-500 text-sm"></p>
+    </div>
+
+    <div class="flex flex-col gap-2">
+        <label for="cuisine-recette" class="font-medium text-[#342C26]">
+            Cuisine
+        </label>
+        <input
+            type="text"
+            id="cuisine-recette"
+            placeholder="Ex: Italian"
+            class="border border-gray-300 rounded-xl px-4 py-3 outline-none focus:border-[#315B45]"
+        >
+        <p id="erreur-cuisine" class="text-red-500 text-sm"></p>
+    </div>
+
+    <div class="flex flex-col gap-2">
+        <label for="difficulte-recette" class="font-medium text-[#342C26]">
+            Difficulté
+        </label>
+        <select
+            id="difficulte-recette"
+            class="border border-gray-300 rounded-xl px-4 py-3 outline-none focus:border-[#315B45]"
+        >
+            <option value="">Choisir une difficulté</option>
+            <option value="Easy">Facile</option>
+            <option value="Medium">Moyenne</option>
+            <option value="Hard">Difficile</option>
+        </select>
+        <p id="erreur-difficulte" class="text-red-500 text-sm"></p>
+    </div>
+
+    <div class="flex flex-col gap-2">
+        <label for="temps-recette" class="font-medium text-[#342C26]">
+            Temps de préparation (minutes)
+        </label>
+        <input
+            type="number"
+            id="temps-recette"
+            placeholder="Ex: 30"
+            class="border border-gray-300 rounded-xl px-4 py-3 outline-none focus:border-[#315B45]"
+        >
+        <p id="erreur-temps" class="text-red-500 text-sm"></p>
+    </div>
+
+    <button
+        type="submit"
+        id="submit-recette"
+        class="bg-[#315B45] text-white font-semibold py-3 rounded-xl hover:bg-[#244533] transition cursor-pointer"
+    >
+        Ajouter la recette
+    </button>
+
+    <p id="message-succes" class="text-green-600 text-sm text-center"></p>
+
+    </form>
+
+  </dialog>
+
+  <dialog id="validation-pop" class="p-[10px] rounded-[15px] shadow-2xl bg-green-100">
+    <h2 class="font-bold text-green-800   ">Votre opération a été effectuée avec succès.</h2>
+    <div class="flex justify-center m-[17px]">
+    <button class="bg-green-700 text-amber-50 p-[6px] w-[45px] rounded-[15px] " id="validation-ok">OK</button>
+    </div>
+  </dialog>
 
   <footer class="border-t border-[#E7DFD5] py-7 text-center text-sm text-[#786E64]">
     © 2026 YouCode Cuisine Club · Fait avec passion

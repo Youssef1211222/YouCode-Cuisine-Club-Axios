@@ -9,3 +9,8 @@ async function searchRecipes(query) {
     const response = await api.get(`/recipes/search?q=${encodeURIComponent(query)}`)
     return response.data.recipes
 }
+
+async function ajouterRecette(recette) {
+    const response = await api.post("/recipes/add", recette)
+    return response.data
+}
