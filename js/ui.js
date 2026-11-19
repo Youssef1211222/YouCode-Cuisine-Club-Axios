@@ -1,7 +1,11 @@
-function afficherRecettes(recettes) {
-    const container = document.getElementById("liste-recettes")
+const container = document.getElementById("liste-recettes")
 
-    const compteur = document.getElementById("compteur-recettes")
+const compteur = document.getElementById("compteur-recettes")
+
+function afficherRecettes(recettes) {
+    
+
+    
     compteur.textContent = `${recettes.length} recettes disponibles`
 
     const returne = document.createElement("button")
@@ -57,3 +61,5 @@ function afficherRecettes(recettes) {
         container.appendChild(card)
     })
 }
+
+

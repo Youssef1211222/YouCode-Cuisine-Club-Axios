@@ -55,7 +55,9 @@ formAjout.addEventListener("submit", async function(event) {
     const cuisineError = document.getElementById("erreur-cuisine")
     const difficulteError = document.getElementById("erreur-difficulte")
     const tempsError = document.getElementById("erreur-temps")
-    
+
+    const submitRecette = document.getElementById("submit-recette")   
+
     if (validerNom(nom) === false) {
         nomError.textContent = "Le nom doit contenir entre 3 et 60 caractères"
     }else {
@@ -92,7 +94,8 @@ formAjout.addEventListener("submit", async function(event) {
     }
 
     modalRecette.close()
-
+    
+    submitRecette.disabled = true
     const nouvelleRecette = await ajouterRecette(recette)
 
     if (nouvelleRecette) {
@@ -106,5 +109,42 @@ formAjout.addEventListener("submit", async function(event) {
 
     }
     console.log(nouvelleRecette)
+
+        const Ncard = document.createElement("div")
+        Ncard.className = "bg-white rounded-2xl shadow-md overflow-hidden"
+
+        const Ndiv = document.createElement("div")
+        Ndiv.className = "flex justify-between items-center px-4 py-4"
+
+        const Ntitre = document.createElement("h3")
+        Ntitre.className = "text-lg font-bold text-[#342C26] px-4 pt-4"
+
+        const Nimage = document.createElement("img")
+        Nimage.className = "w-full h-48 object-cover"
+
+        const Ncuisine = document.createElement("p")
+        Ncuisine.className = "text-sm text-gray-500 px-4 mt-1"
+
+        const Ndifficulty = document.createElement("p")
+        Ndifficulty.className = "text-sm font-medium text-[#315B45]"
+
+        const Ntemps = document.createElement("span")
+        Ntemps.className = "text-sm text-gray-500"
+
+        Ntitre.textContent = nouvelleRecette.name
+
+        Ncuisine.textContent = nouvelleRecette.cuisine
+
+        Ndifficulty.textContent = nouvelleRecette.difficulty
+
+        Ntemps.textContent = `${nouvelleRecette.prepTimeMinutes} Min`
+  
+
+        Ndiv.append(Ndifficulty,Ntemps)
+        Ncard.append(Nimage,Ntitre,Ncuisine,Ndiv)
+        container.prepend(Ncard)
+
+        submitRecette.disabled = false
+        
 })
 
