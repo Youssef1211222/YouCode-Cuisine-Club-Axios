@@ -14,3 +14,10 @@ async function ajouterRecette(recette) {
     const response = await api.post("/recipes/add", recette)
     return response.data
 }
+
+
+async function supprimerRecette(id) {
+    const response = await api.delete(`/recipes/${id}`)
+    return response.data
+}
+

@@ -2,6 +2,16 @@ const container = document.getElementById("liste-recettes")
 
 const compteur = document.getElementById("compteur-recettes")
 
+const deleteDialog = document.getElementById("delete-dialog")
+
+const cancelDelete = document.getElementById("cancel-delete")
+
+const confirmDelete = document.getElementById("confirm-delete")
+
+let cardASupprimer = null;
+
+let recetteIdASupprimer = null
+
 function afficherRecettes(recettes) {
     
 
@@ -49,6 +59,16 @@ function afficherRecettes(recettes) {
         const temps = document.createElement("span")
         temps.className = "text-sm text-gray-500"
 
+        const deleteButton  = document.createElement("button")
+        deleteButton.textContent = "Delete"
+        deleteButton.className = "m-[15px] bg-red-100 text-red-700 hover:bg-red-200 px-3 py-1 rounded-lg text-sm font-medium transition"
+
+        deleteButton.addEventListener("click" , function() {
+            recetteIdASupprimer = recette.id
+            cardASupprimer = card
+            deleteDialog.showModal();
+        })
+
         titre.textContent =  recette.name
         image.src = recette.image
         cuisine.textContent = recette.cuisine
@@ -57,9 +77,33 @@ function afficherRecettes(recettes) {
 
 
         div.append(difficulty,temps)
-        card.append(image,titre,cuisine,div)
+        card.append(image,titre,cuisine,div,deleteButton)
         container.appendChild(card)
     })
 }
+
+cancelDelete.addEventListener("click" , function() {
+    deleteDialog.close()
+})
+
+confirmDelete.addEventListener("click", async function (event) {
+    try {
+        const response = await supprimerRecette(recetteIdASupprimer)
+        cardASupprimer.remove()
+        const validationPop = document.getElementById("validation-pop")
+        validationPop.showModal()
+        const validationOk = document.getElementById("validation-ok")
+        validationOk.addEventListener("click" , function() {
+            validationPop.close()
+        })
+       
+
+        deleteDialog.close()
+
+
+    } catch (error) {
+        console.error("Erreur lors de la suppression :", error)
+    }
+})
 
 
